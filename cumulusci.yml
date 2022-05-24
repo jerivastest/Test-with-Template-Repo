@@ -1,0 +1,30 @@
+minimum_cumulusci_version: '3.58.0'
+project:
+    name: Test-with-Template-Repo
+    package:
+        name: Test-with-Template-Repo
+        api_version: '54.0'
+    dependencies:
+        - github: 'http://google.com'
+    git:
+        default_branch: 'main'
+        prefix_feature: 'feature/'
+        prefix_beta: 'beta/'
+        prefix_release: 'release/'
+    source_format: sfdx
+
+tasks:
+    robot:
+        options:
+            suites: robot/Test-with-Template-Repo/tests
+            options:
+                outputdir: robot/Test-with-Template-Repo/results
+
+    robot_testdoc:
+        options:
+            path: robot/Test-with-Template-Repo/tests
+            output: robot/Test-with-Template-Repo/doc/Test-with-Template-Repo_tests.html
+
+    run_tests:
+        options:
+            required_org_code_coverage_percent: 75
